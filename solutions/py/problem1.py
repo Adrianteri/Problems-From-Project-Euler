@@ -1,38 +1,22 @@
-array1 = []
-array2 = []
-array3 = []
+# If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.
 
-#initiliaze array of numbers below 1000
-def arrBelow1000(array1):
-    for i in range(1,1000):
-        array1.append(i)
+# Find the sum of all the multiples of 3 or 5 below 1000.
 
-    return array1
+#Generator for numbers
+def number_generator(n):
+    a_three_five = []
+    for i in range(1,n+1):
+        a_three_five.append(multiple_checker(i))
 
-arrBelow1000(array1)
 
-#find multiplesOf3 and multiplesOf5
-def multiplesOf3(array1,array2,array3):
-    for numbers in array1:
-        if numbers % 3 == 0:
-            array2.append(numbers)
-        elif numbers % 5 == 0:
-            array3.append(numbers)
+    print("The sum of multiples of 3 and 5 under 1000 is {} ".format(sum(a_three_five)))    
 
-    return array2,array3
+def multiple_checker(digit):
+    if digit % 3 == 0 or digit % 5 == 0:
+        print(digit)
+        return digit
+    else:
+        return 0    
 
-multiplesOf3(array1,array2,array3)
-
-def addMultiples(array2,array3):
-    sumOfMultiples = 0
-    sumOf3Multiples = 0
-    sumOf5Multiples = 0
-
-    sumOf3Multiples = sum(array2)
-    sumOf5Multiples = sum(array3)
-
-    sumOfMultiples = sumOf3Multiples + sumOf5Multiples
-
-    print "\nThe sum of 3s and 5s Multiples is %d " %(sumOfMultiples)
-
-addMultiples(array2,array3)
+if __name__ == "__main__":
+    number_generator(1000)
